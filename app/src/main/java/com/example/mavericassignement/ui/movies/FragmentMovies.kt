@@ -35,7 +35,13 @@ class FragmentMovies : Fragment(R.layout.fragment_movies), Listener {
                 adapter?.submitData(movies)
             }
         }
-
+        binding.search.doOnTextChanged { text, start, before, count ->
+            viewLifecycleOwner.lifecycleScope.launch {
+                moviesViewModel.getMovies(text.toString().trim()).collectLatest { movies ->
+                    adapter?.submitData(movies)
+                }
+            }
+        }
     }
 
     private fun initView() {

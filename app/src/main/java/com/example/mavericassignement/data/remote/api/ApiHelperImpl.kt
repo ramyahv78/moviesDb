@@ -6,8 +6,8 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class ApiHelperImpl @Inject constructor(private val apiService: ApiService) : ApiHelper {
-    override suspend fun getMovies(page: Int): Response<Movie> {
-        return apiService.getMovies(page = page)
+    override suspend fun getMovies(page: Int, searchWord: String?): Response<Movie> {
+        return apiService.getMovies(page = page,search = searchWord)
     }
 
     override suspend fun getMovieDetails(imdb: String): Response<MovieDetails> {

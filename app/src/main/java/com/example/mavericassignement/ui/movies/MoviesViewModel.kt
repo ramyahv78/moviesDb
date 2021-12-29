@@ -10,8 +10,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(private val repo: MoviesRepository) : ViewModel() {
-    suspend fun getMovies(trim: String?): Flow<PagingData<Movie.Search>> {
-        return repo.getMovies()
+    suspend fun getMovies(searchWord: String?): Flow<PagingData<Movie.Search>> {
+        return repo.getMovies(searchWord)
     }
 
 

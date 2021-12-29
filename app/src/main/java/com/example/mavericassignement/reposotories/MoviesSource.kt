@@ -3,18 +3,21 @@ package com.example.mavericassignement.reposotories
 import androidx.paging.PagingSource
 import com.example.mavericassignement.data.remote.api.ApiHelper
 import com.example.mavericassignement.data.remote.api.model.Movie
-import javax.inject.Inject
 
 
 class MoviesSource(
-    private val apiHelper: ApiHelper
+    private val apiHelper: ApiHelper,
+   private var searchWord: String?
 ) : PagingSource<Int, Movie.Search>()  {
 
      override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie.Search> {
           return try {
                // Start refresh at page 1 if undefined.
                val nextPage = params.key ?: 1
-               val response = apiHelper.getMovies(nextPage)
+               if(searchWord.isNullOrBlank()){
+                    searchWord="Marvel"
+               }
+               val response = apiHelper.getMovies(nextPage,searchWord)
                val data=response.body() as Movie
                LoadResult.Page(
                     data = data.search,

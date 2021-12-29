@@ -12,7 +12,7 @@ interface ApiService {
     suspend fun getMovies(
         @Query("apikey") apiKey: String = "b9bd48a6",
         @Query("page") page: Int,
-        @Query("s") search: String = "Marvel"
+        @Query("s") search: String? = "Marvel"
     ): Response<Movie>
 
 

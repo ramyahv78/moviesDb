@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:hint="Search for movie title"
+        app:layout_constraintEnd_toEndOf="@id/guidLineEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintTop_toBottomOf="@id/tvHeader" />
+
     <TextView
         android:id="@+id/tvHeader"
         android:layout_width="wrap_content"

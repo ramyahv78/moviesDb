@@ -13,9 +13,9 @@ import javax.inject.Inject
 class MoviesRepository @Inject constructor(private val apiHelper: ApiHelper) {
 
 
-    suspend fun getMovies(): Flow<PagingData<Movie.Search>> =
+    suspend fun getMovies(searchWord: String?): Flow<PagingData<Movie.Search>> =
         Pager(PagingConfig(pageSize = 20)) {
-            MoviesSource(apiHelper)
+            MoviesSource(apiHelper,searchWord)
         }.flow
 
 
