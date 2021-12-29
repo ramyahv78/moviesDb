@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MavericAssignement</string>
+    <string name="retry">retry</string>
+    <string name="movies_list">Movies List</string>
+</resources>
